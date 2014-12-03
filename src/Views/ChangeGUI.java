@@ -417,9 +417,7 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        Drugs drug = drugArray.get(jList1.getSelectedIndex());
-        
-          jTextField3.setText(ctrl.totalPrice(drug, Integer.parseInt(quantity.getText()))+"");
+           jTextField3.setText(ctrl.totalPrice(Integer.parseInt(jTextField2.getText()+""), Integer.parseInt(quantity.getText()))+"");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
@@ -444,8 +442,8 @@ public class ChangeGUI extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jList1MouseClicked
         Drugs drug = drugArray.get(jList1.getSelectedIndex());
         
-        jTextField1.setText(ctrl.calculateFinalPrice(drug)+"");
-        jTextField2.setText(ctrl.calculateFinalAvailability(drug)+"");
+        jTextField2.setText(ctrl.calculateFinalPrice(drug)+"");
+        jTextField1.setText(ctrl.calculateFinalAvailability(drug)+"");
     }//GEN-LAST:event_jList1MouseClicked
 
     private void jList2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList2MouseClicked

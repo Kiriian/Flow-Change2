@@ -145,9 +145,10 @@ public class Controller
         FileHandler.save(userArray, "highscore.txt");
     }
 
-    public int totalPrice(Drugs drug, int quantity)
+    public int totalPrice(int number, int quantity)
     {
-        return totalPrice = calculateFinalPrice(drug) * quantity;
+        System.out.println("number =" + quantity);
+        return totalPrice = number * quantity;
     }
 
 }
