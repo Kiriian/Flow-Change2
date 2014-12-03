@@ -22,13 +22,16 @@ public class ChangeGUI extends javax.swing.JFrame
     DefaultListModel listModel = new DefaultListModel();
     Controller ctrl = new Controller();
     private ArrayList<Drugs> drugArray;
+    private ArrayList<Drugs> yourDrugs;
     public ChangeGUI()     
     {
         initComponents();
         
         jList1.setModel(listModel);
+        jList2.setModel(listModel);
         ctrl.addDrugs();
         drugArray = ctrl.getDrugs();
+        
     }
 
     /**
@@ -165,8 +168,22 @@ public class ChangeGUI extends javax.swing.JFrame
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Denmark", "Columbia", "Germany", "USA", "Afghanistan" }));
 
         jButton4.setText("Travel");
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jTextField11.setText("username");
+        jTextField11.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jTextField11ActionPerformed(evt);
+            }
+        });
 
         jTextField12.setText("score");
 
@@ -436,6 +453,7 @@ public class ChangeGUI extends javax.swing.JFrame
         Drugs drug = drugArray.get(jList1.getSelectedIndex());
         
         ctrl.buyDrugs(drug,Integer.parseInt(quantity.getText()+""));
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList1MouseClicked
@@ -460,6 +478,26 @@ public class ChangeGUI extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField11ActionPerformed
+    {//GEN-HEADEREND:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
+    {//GEN-HEADEREND:event_jButton4ActionPerformed
+      {                                             
+        jTabbedPane1.setSelectedIndex(2);
+        listModel = new DefaultListModel();
+        yourDrugs = ctrl.getYourDrugs();
+        for (int i = 0; i < yourDrugs.size(); i++)
+        {
+            listModel.addElement(yourDrugs.get(i).sellString());
+        }
+        jList2.setModel(listModel);
+    }
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

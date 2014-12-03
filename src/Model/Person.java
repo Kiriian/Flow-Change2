@@ -11,14 +11,13 @@ import flow.change.Controller;
  */
 public class Person
 {
-   
     private int score;
     private String username;
     Controller ctrl = new Controller();
 
     public Person(String username)
     {
-        this.score = score;
+        this.score = 5000;
         this.username = username;
     }
     //bør vi ikke sidestille cash med point - har allerede gjort det i guien...
@@ -48,5 +47,9 @@ public class Person
     {
         return "Person{" + "Score=" + score + ", username=" + username + '}';
     }
-       
+      
+//    public int newScore()
+//    {
+//        score = score - 
+//    }
 }

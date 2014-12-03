@@ -93,4 +93,8 @@ public class Drugs
     {
         return drugName;
     }
+    public String sellString()
+    {
+        return drugName+", "+baseAvailability;
+    }
 }

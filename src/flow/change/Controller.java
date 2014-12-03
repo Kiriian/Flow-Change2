@@ -26,7 +26,7 @@ public class Controller
     private String drugName;
     private int finalPrice;
     private int days;
-    private int totalPrice;
+    private static int totalPrice;
     private PriceStrategy PriceStrategy_OldMemory = new PriceStrategy_OldMemory();
     private PriceStrategy PriceStrategy_ABC = new PriceStrategy_ABC();
     private PriceStrategy PriceStrategy_SecondsOfTheClock = new PriceStrategy_SecondsOfTheClock();
@@ -79,12 +79,18 @@ public class Controller
         } else
         {
             drug.setBaseAvailability(quantity);
+            System.out.println("mængden fra gui er: "+quantity);
             yourDrugs.add(drug);
             System.out.println(yourDrugs.toString() + "hello");
         }
 
     }
 
+    public ArrayList<Drugs> getYourDrugs()
+    {
+        return yourDrugs;
+    }
+    
     public boolean load(String filename)
     {
 //        drugArray = FileHandler.loadDrugs("Drugs.txt");
@@ -148,7 +154,9 @@ public class Controller
     public int totalPrice(int number, int quantity)
     {
         System.out.println("number =" + quantity);
-        return totalPrice = number * quantity;
+        int totalPrice = number * quantity;
+        //Her skal scoren gemmes på spilleren - der bliver new¨et i starten af controlleren
+        return totalPrice;
     }
 
 }
