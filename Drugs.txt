@@ -1,0 +1,10 @@
+Cocain,1200,30,10,PriceStrategy_OldMemory
+Heroin,1600,15,15,PriceStrategy_ABC
+Amphetamine,200,50,7,PriceStrategy_ABC
+Acid,550,33,5,PriceStrategy_ABC
+Angel_Dust,400,60,7,PriceStrategy_ABC
+Crystal_Meth,800,38,12,PriceStrategy_ABC
+Hash,180,100,4,PriceStrategy_SimpleTwoChoice
+Weed,150,115,5,PriceStrategy_ABC
+Mushrooms,120,95,7,PriceStrategy_SecondsOfTime
+Valium,290,80,7,PriceStrategy_ABC
