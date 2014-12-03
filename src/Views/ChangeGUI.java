@@ -453,7 +453,6 @@ public class ChangeGUI extends javax.swing.JFrame
         Drugs drug = drugArray.get(jList1.getSelectedIndex());
         
         ctrl.buyDrugs(drug,Integer.parseInt(quantity.getText()+""));
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList1MouseClicked
@@ -466,12 +465,15 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jList2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList2MouseClicked
     {//GEN-HEADEREND:event_jList2MouseClicked
-        // TODO add your handling code here:
+        Drugs drug = yourDrugs.get(jList2.getSelectedIndex());
+        
+        jTextField6.setText(Integer.parseInt(drug.getBaseAvailability()+"")+"");
+        jTextField5.setText(ctrl.calculateFinalPrice(drug)+"");
     }//GEN-LAST:event_jList2MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
     {//GEN-HEADEREND:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        jTextField4.setText(ctrl.totalPrice(Integer.parseInt(jTextField5.getText()+""), Integer.parseInt(quantity1.getText()))+"");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
@@ -486,7 +488,6 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
     {//GEN-HEADEREND:event_jButton4ActionPerformed
-      {                                             
         jTabbedPane1.setSelectedIndex(2);
         listModel = new DefaultListModel();
         yourDrugs = ctrl.getYourDrugs();
@@ -495,7 +496,6 @@ public class ChangeGUI extends javax.swing.JFrame
             listModel.addElement(yourDrugs.get(i).sellString());
         }
         jList2.setModel(listModel);
-    }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
