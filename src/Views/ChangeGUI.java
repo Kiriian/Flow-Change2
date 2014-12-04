@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import Model.Drugs;
 import flow.change.Controller;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -24,16 +26,18 @@ public class ChangeGUI extends javax.swing.JFrame
     Controller ctrl = new Controller();
     private ArrayList<Drugs> drugArray;
     private ArrayList<Drugs> yourDrugs;
-    public ChangeGUI()     
+    private ArrayList<Country> landList;
+
+    public ChangeGUI()
     {
         initComponents();
-        
+
         jList1.setModel(listModel);
         jList2.setModel(listModel);
         ctrl.addDrugs();
-        
+        landList = ctrl.getCountries();
         drugArray = ctrl.getDrugs();
-        
+
     }
 
     /**
@@ -450,7 +454,7 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-           jTextField3.setText(ctrl.totalPrice(Integer.parseInt(jTextField2.getText()+""), Integer.parseInt(quantity.getText()))+"");
+        jTextField3.setText(ctrl.totalPrice(Integer.parseInt(jTextField2.getText() + ""), Integer.parseInt(quantity.getText())) + "");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
@@ -462,40 +466,46 @@ public class ChangeGUI extends javax.swing.JFrame
             listModel.addElement(drugArray.get(i));
         }
         jList1.setModel(listModel);
+        
+        jComboBox1.setModel(new DefaultComboBoxModel());
+        for (int i = 0; i < landList.size(); i++)
+        {
+            jComboBox1.addItem(landList.get(i));
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         Drugs drug = drugArray.get(jList1.getSelectedIndex());
-        
-        ctrl.buyDrugs(drug,Integer.parseInt(quantity.getText()+""));
+
+        ctrl.buyDrugs(drug, Integer.parseInt(quantity.getText() + ""));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList1MouseClicked
     {//GEN-HEADEREND:event_jList1MouseClicked
         Drugs drug = drugArray.get(jList1.getSelectedIndex());
-        
-        jTextField2.setText(ctrl.calculateFinalPrice(drug)+"");
-        jTextField1.setText(ctrl.calculateFinalAvailability(drug)+"");
+
+        jTextField2.setText(ctrl.calculateFinalPrice(drug) + "");
+        jTextField1.setText(ctrl.calculateFinalAvailability(drug) + "");
     }//GEN-LAST:event_jList1MouseClicked
 
     private void jList2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList2MouseClicked
     {//GEN-HEADEREND:event_jList2MouseClicked
         Drugs drug = yourDrugs.get(jList2.getSelectedIndex());
-        
-        jTextField6.setText(Integer.parseInt(drug.getBaseAvailability()+"")+"");
-        jTextField5.setText(ctrl.calculateFinalPrice(drug)+"");
+
+        jTextField6.setText(Integer.parseInt(drug.getBaseAvailability() + "") + "");
+        jTextField5.setText(ctrl.calculateFinalPrice(drug) + "");
     }//GEN-LAST:event_jList2MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
     {//GEN-HEADEREND:event_jButton5ActionPerformed
-        jTextField4.setText(ctrl.totalPrice(Integer.parseInt(jTextField5.getText()+""), Integer.parseInt(quantity1.getText()))+"");
+        jTextField4.setText(ctrl.totalPrice(Integer.parseInt(jTextField5.getText() + ""), Integer.parseInt(quantity1.getText())) + "");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
     {//GEN-HEADEREND:event_jButton7ActionPerformed
         Drugs drug = yourDrugs.get(jList2.getSelectedIndex());
-        
+
         ctrl.sellDrugs(drug, Integer.parseInt(quantity1.getText()));
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -531,7 +541,7 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
     {//GEN-HEADEREND:event_jComboBox1ActionPerformed
-        javax.swing.JComboBox jComboBox = new javax.swing.JComboBox(SundayList);
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**

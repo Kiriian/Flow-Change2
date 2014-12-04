@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Country
 {
     private String country;
-    private ArrayList<Country> landList = new ArrayList<>();
 
     public Country(String country)
     {
@@ -26,14 +25,5 @@ public class Country
         return country;
     }
 
-    public ArrayList<Country> Countries()
-    {
-        landList.add(new Country("Denmark"));
-        landList.add(new Country("Columbia"));
-        landList.add(new Country("Germany"));
-        landList.add(new Country("USA"));
-        landList.add(new Country("Afghanistan"));
 
-        return landList;
-    }
 }

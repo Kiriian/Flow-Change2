@@ -7,6 +7,7 @@ package flow.change;
 
 import Filehandler.FileHandler;
 import Interface.PriceStrategy;
+import Model.Country;
 import java.util.Random;
 import Model.Drugs;
 import Model.Person;
@@ -23,6 +24,7 @@ public class Controller
     private ArrayList<Drugs> drugArray = new ArrayList<>();
     private ArrayList<Person> userArray = new ArrayList<>();
     private ArrayList<Drugs> yourDrugs = new ArrayList<>();
+    private ArrayList<Country> landList = new ArrayList<>();
     private String drugName;
     private int finalPrice;
     private int days;
@@ -134,6 +136,17 @@ public class Controller
             System.out.println("you can't sell, what you don't have");
         }
 
+    }
+    
+        public ArrayList<Country> getCountries()
+    {
+        landList.add(new Country("Denmark"));
+        landList.add(new Country("Columbia"));
+        landList.add(new Country("Germany"));
+        landList.add(new Country("USA"));
+        landList.add(new Country("Afghanistan"));
+
+        return landList;
     }
 
     public int travel(String username, int score)
