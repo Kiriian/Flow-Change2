@@ -12,6 +12,8 @@ import Model.Drugs;
  */
 public interface PriceStrategy
 {
+    //metode til at beregne den endelige pris
     public int calculateFinalPrice(Drugs drug);
+    //metode til at beregne den endelige availabiity af drugs
     public int calculateAvailability(Drugs drug);
 }

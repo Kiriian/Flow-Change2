@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author Pernille
  */
+// Klassen Drugs holder styr pÃ¥ drugs og de tilknyttede prisstrategier
 public class Drugs
 {
 
@@ -76,15 +77,12 @@ public class Drugs
     }
 
     public int calFinal()
-    {
-        System.out.println(this + "didilido");
-        
+    {   
         return priceStrategy.calculateFinalPrice(this);
     }
     
     public int calAvailibality()
     {
-        System.out.println(this+"lad");
         return priceStrategy.calculateAvailability(this);
     }
     

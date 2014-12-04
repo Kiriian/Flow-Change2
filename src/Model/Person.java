@@ -20,7 +20,6 @@ public class Person
         this.score = score;
         this.username = username;
     }
-    //bør vi ikke sidestille cash med point - har allerede gjort det i guien...
 
     public int getScore()
     {

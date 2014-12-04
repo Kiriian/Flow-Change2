@@ -139,7 +139,7 @@ public class ChangeGUI extends javax.swing.JFrame
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Her kommer mere info sener, men for at\nbegynd spillet skal du bare trykke travel\nefter du har indtaste dit brugernavn.");
+        jTextArea1.setText("Welcome player\n\nEnter your username and press \nTravel to start the game.\nYou get 5000$ and 20 days to buy and \nsell drugs.\nLet¨s se if you are lucky enough to get a\nhigh score.\n");
         jScrollPane3.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

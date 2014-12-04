@@ -64,7 +64,8 @@ public class Controller
 
         return drug.calAvailibality();
     }
-
+// metoden smider de købte drugs i arrayliste og fratrækkker penge for kÃ¸bet af drugs
+// eksistrerer drugget i listen i forvejen opdateres mængden
     public void buyDrugs(Drugs drug, int quantity)
     {
         if (!yourDrugs.isEmpty())
@@ -82,12 +83,9 @@ public class Controller
         } else
         {
             drug.setBaseAvailability(quantity);
-            System.out.println("mængden fra gui er: " + quantity);
             yourDrugs.add(drug);
             setScoreBuy();
-            System.out.println(yourDrugs.toString() + "hello");
         }
-
     }
 
     public ArrayList<Drugs> getYourDrugs()
@@ -106,6 +104,7 @@ public class Controller
 
         return true;
     }
+// metoden fratrækker de solgte drugs i arrayliste og tillÃ¦ggerfratrÃ¦kker penge for salget
 
     public void sellDrugs(Drugs drug, int quantity)
     {
@@ -113,12 +112,9 @@ public class Controller
         {
             drug.setBaseAvailability(drug.getBaseAvailability() - quantity);
             setScoreSell();
-            System.out.println("remaining: " + drug.getBaseAvailability());
         } else if (quantity == drug.getBaseAvailability())
         {
             yourDrugs.remove(drug);
-            setScoreSell();
-            System.out.println("arraylist: " + yourDrugs.toString());
         } else
         {
             System.out.println("you can't sell, what you don't have");
@@ -169,9 +165,7 @@ public class Controller
     public int setScoreBuy()
     {
         Person p = userArray.get(0);
-        System.out.println("hej total: " + totalPrice);
         p.setScore(p.getScore() - totalPrice);
-        System.out.println("Score" + p.getScore());
         return p.getScore();
     }
 
@@ -184,12 +178,10 @@ public class Controller
     public void addNewPerson(String username, int score)
     {
         userArray.add(new Person(username, score));
-        System.out.println("userArray: " + userArray.toString());
     }
 
     public int totalPrice(int number, int quantity)
     {
-        System.out.println("number =" + quantity);
         totalPrice = number * quantity;
         //Her skal scoren gemmes på spilleren - der bliver new¨et i starten af controlleren
         return totalPrice;

@@ -14,6 +14,8 @@ import java.util.Random;
  *
  * @author Pernille
  */
+// denne klasse implementerer interface og indeholder prisstrategi for opgave a-c
+
 public class PriceStrategy_ABC implements PriceStrategy
 {
     private Random random = new Random();
@@ -31,26 +33,18 @@ public class PriceStrategy_ABC implements PriceStrategy
     @Override
     public int calculateFinalPrice(Drugs drug)
     {        
-        System.out.println(drug+"der");
         adjust = random.nextInt(85) + 1;
-        System.out.println("adjust = "+adjust);
         if (adjust % 2 == 0)// denne kode tager kun højde for kokain
         {
             middelSum = ((adjust * drug.getBasePrice()) / 100);
-            System.out.println("middlesum = " + middelSum);
             finalPrice = drug.getBasePrice() - middelSum;
-            System.out.println("Price" + finalPrice);
             finalPrice = finalPrice*goldenNumberFactor(drug);
-            System.out.println("endPrice" + finalPrice);
             return finalPrice;
         } else
         {
             middelSum = ((adjust * drug.getBasePrice()) / 100);
-            System.out.println("middlesum2 = " + middelSum);
             finalPrice = drug.getBasePrice() + middelSum;
-            System.out.println("Price" + finalPrice);
             finalPrice = finalPrice*goldenNumberFactor(drug);
-            System.out.println("FinalPrice = " + finalPrice);
             return finalPrice;
         }
     }
@@ -72,58 +66,36 @@ public class PriceStrategy_ABC implements PriceStrategy
     {
         Random rand = new Random();
         int chance = rand.nextInt(100);
-        System.out.println("Drugs" + drug.getDrugName());
-        System.out.println(chance);
-//        for (Drugs i : drugArray)
-//        {
-//            System.out.println("fisk " + i.getDrugName());
-//            if (drug.getDrugName().equals(i.getDrugName()))
-//            {
                 if (chance <= drug.getGoldenNumber())
                 {
                     if (chance % 2 == 0)
                     {
-                        System.out.println("Factor3" + factor);
                         factor = 10;
                         return factor;
                     } else
                     {
-                        System.out.println("Factor2" + factor);
                         factor = 1;
                         return factor;
                     }
                 } else
                 {
-                    System.out.println("Factor1" + factor);
                     factor = 1;
                     return factor;
                 }
-//            }
-//        }
-//        System.out.println("Factor0" + factor);
-//        return 0;
     }
     @Override
     public int calculateAvailability(Drugs drug)
     {
-        System.out.println(drug + "blablabla");
-        
         adjustAva = random.nextInt(40) + 15;
-        System.out.println("adjustAva " + adjustAva);
         if (adjustAva % 2 == 0)
         {
             middelSumAva = ((adjustAva * drug.getBaseAvailability()) / 100);
             finalAvailability = drug.getBaseAvailability() - middelSumAva;
-            System.out.println("middelsum" + middelSumAva + "adjust" + adjustAva);
-
-            System.out.println("availability?" + finalAvailability);
             return finalAvailability;
         } else
         {
             middelSumAva = ((adjustAva * drug.getBaseAvailability()) / 100);
             finalAvailability = drug.getBaseAvailability() + middelSumAva;
-            System.out.println("middelsum" + middelSumAva);
-            System.out.println("availability" + finalAvailability + "adjust" + adjustAva);
             return finalAvailability;
         }
     }

@@ -157,7 +157,7 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Her kommer mere info sener, men for at&#xa;begynd spillet skal du bare trykke travel&#xa;efter du har indtaste dit brugernavn."/>
+                    <Property name="text" type="java.lang.String" value="Welcome player&#xa;&#xa;Enter your username and press &#xa;Travel to start the game.&#xa;You get 5000$ and 20 days to buy and &#xa;sell drugs.&#xa;Let&#xa8;s se if you are lucky enough to get a&#xa;high score.&#xa;"/>
                   </Properties>
                 </Component>
               </SubComponents>

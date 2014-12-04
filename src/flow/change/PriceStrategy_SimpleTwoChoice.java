@@ -12,19 +12,20 @@ import Model.Drugs;
  *
  * @author Pernille
  */
+// vi har ikke nået at lave denne prisstrategi
 public class PriceStrategy_SimpleTwoChoice implements PriceStrategy
 {
 
     @Override
     public int calculateFinalPrice(Drugs drug)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return 0;
     }
 
     @Override
     public int calculateAvailability(Drugs drug)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return 0;
     }
     
 }

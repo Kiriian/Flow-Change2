@@ -14,6 +14,7 @@ import java.util.TimeZone;
  *
  * @author Pernille
  */
+//prisstrategi der anvender sekundslaget til at afgøre prisen og avaoilabilitien
 public class PriceStrategy_SecondsOfTheClock implements PriceStrategy
 {
 
