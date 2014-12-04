@@ -27,7 +27,7 @@ public class Controller
     private ArrayList<Country> landList = new ArrayList<>();
     private String drugName;
     private int finalPrice;
-    private int days;
+    private int days = 20;
     private static int totalPrice;
     private PriceStrategy PriceStrategy_OldMemory = new PriceStrategy_OldMemory();
     private PriceStrategy PriceStrategy_ABC = new PriceStrategy_ABC();
@@ -151,16 +151,15 @@ public class Controller
         return landList;
     }
 
-    public int travel(String username)
+    public int getDays()
     {
-        if (days == 20)
-        {
-            return days;
-        } else
-        {
-            days++;
-            return days;
-        }
+        return days;
+    }
+    
+    public int travel()
+    {
+        days--;
+        return days;
     }
 
     public ArrayList<Person> getUserArray()
