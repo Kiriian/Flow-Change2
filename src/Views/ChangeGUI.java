@@ -7,6 +7,7 @@ package Views;
 
 import Filehandler.FileHandler;
 import Model.Drugs;
+import Model.Country;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import Model.Drugs;
@@ -30,6 +31,7 @@ public class ChangeGUI extends javax.swing.JFrame
         jList1.setModel(listModel);
         jList2.setModel(listModel);
         ctrl.addDrugs();
+        
         drugArray = ctrl.getDrugs();
         
     }
@@ -41,7 +43,8 @@ public class ChangeGUI extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -102,8 +105,10 @@ public class ChangeGUI extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton3.setText("Travel");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton3ActionPerformed(evt);
             }
         });
@@ -127,23 +132,29 @@ public class ChangeGUI extends javax.swing.JFrame
 
         jTabbedPane1.addTab("tab1", jPanel1);
 
-        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jList1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 jList1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jList1);
 
         jButton1.setText("Calculate final price");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Buy");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -157,17 +168,28 @@ public class ChangeGUI extends javax.swing.JFrame
         jLabel4.setText("Final Price:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Denmark", "Columbia", "Germany", "USA", "Afghanistan" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Travel");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton4ActionPerformed(evt);
             }
         });
 
         jTextField11.setText("username");
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField11.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextField11ActionPerformed(evt);
             }
         });
@@ -271,14 +293,18 @@ public class ChangeGUI extends javax.swing.JFrame
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Denmark", "Columbia", "Germany", "USA", "Afghanistan" }));
 
         jButton5.setText("Calculate final price");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jList2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jList2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 jList2MouseClicked(evt);
             }
         });
@@ -287,8 +313,10 @@ public class ChangeGUI extends javax.swing.JFrame
         jLabel5.setText("Final Price:");
 
         jButton6.setText("Travel");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton6ActionPerformed(evt);
             }
         });
@@ -298,8 +326,10 @@ public class ChangeGUI extends javax.swing.JFrame
         jLabel7.setText("Available");
 
         jButton7.setText("Sell");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton7ActionPerformed(evt);
             }
         });
@@ -464,7 +494,9 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
     {//GEN-HEADEREND:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        Drugs drug = yourDrugs.get(jList2.getSelectedIndex());
+        
+        ctrl.sellDrugs(drug, Integer.parseInt(quantity1.getText()));
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField11ActionPerformed
@@ -496,6 +528,11 @@ public class ChangeGUI extends javax.swing.JFrame
         }
         jList1.setModel(listModel);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
+    {//GEN-HEADEREND:event_jComboBox1ActionPerformed
+        javax.swing.JComboBox jComboBox = new javax.swing.JComboBox(SundayList);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

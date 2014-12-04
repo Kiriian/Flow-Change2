@@ -79,7 +79,7 @@ public class Controller
         } else
         {
             drug.setBaseAvailability(quantity);
-            System.out.println("mængden fra gui er: "+quantity);
+            System.out.println("mængden fra gui er: " + quantity);
             yourDrugs.add(drug);
             System.out.println(yourDrugs.toString() + "hello");
         }
@@ -90,7 +90,7 @@ public class Controller
     {
         return yourDrugs;
     }
-    
+
     public boolean load(String filename)
     {
 //        drugArray = FileHandler.loadDrugs("Drugs.txt");
@@ -117,18 +117,23 @@ public class Controller
         }
     }
 
-    public int sellDrugs(String drugName)
+    public void sellDrugs(Drugs drug, int quantity)
     {
-        Drugs temp = null;
-        for (Drugs dObject : yourDrugs)
+        if (quantity < drug.getBaseAvailability())
         {
-            if (dObject.getDrugName().equals(drugName))
-            {
-                temp = dObject;
-                return temp.getBaseAvailability();
-            }
+            drug.setBaseAvailability(drug.getBaseAvailability() - quantity);
+            System.out.println("remaining: " + drug.getBaseAvailability());
         }
-        return 0;
+        else if (quantity == drug.getBaseAvailability())
+        {
+            yourDrugs.remove(drug);
+            System.out.println("arraylist: " + yourDrugs.toString());
+        }
+        else
+        {
+            System.out.println("you can't sell, what you don't have");
+        }
+
     }
 
     public int travel(String username, int score)
