@@ -541,6 +541,10 @@ public class ChangeGUI extends javax.swing.JFrame
             listModel.addElement(drugArray.get(i));
         }
         jList1.setModel(listModel);
+        jTextField4.setText("");
+        quantity1.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
