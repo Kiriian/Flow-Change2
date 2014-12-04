@@ -15,9 +15,9 @@ public class Person
     private String username;
     Controller ctrl = new Controller();
 
-    public Person(String username)
+    public Person(String username, int score)
     {
-        this.score = 5000;
+        this.score = score;
         this.username = username;
     }
     //bør vi ikke sidestille cash med point - har allerede gjort det i guien...

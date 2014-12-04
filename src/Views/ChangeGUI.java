@@ -11,6 +11,7 @@ import Model.Country;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import Model.Drugs;
+import Model.Person;
 import flow.change.Controller;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
@@ -26,6 +27,7 @@ public class ChangeGUI extends javax.swing.JFrame
     Controller ctrl = new Controller();
     private ArrayList<Drugs> drugArray;
     private ArrayList<Drugs> yourDrugs;
+    private ArrayList<Person> userArray;
     private ArrayList<Country> landList;
 
     public ChangeGUI()
@@ -54,6 +56,12 @@ public class ChangeGUI extends javax.swing.JFrame
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
@@ -117,21 +125,60 @@ public class ChangeGUI extends javax.swing.JFrame
             }
         });
 
+        jLabel9.setText("Your Username:");
+
+        jLabel10.setText("Your Start Money:");
+
+        jLabel11.setText("5000");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Her kommer mere info sener, men for at\nbegynd spillet skal du bare trykke travel\nefter du har indtaste dit brugernavn.");
+        jScrollPane3.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jButton3)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         jTabbedPane1.addTab("tab1", jPanel1);
@@ -459,18 +506,28 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
-        jTabbedPane1.setSelectedIndex(1);
-        listModel = new DefaultListModel();
-        for (int i = 0; i < drugArray.size(); i++)
+        if (jTextField15.getText().length() != 0)
         {
-            listModel.addElement(drugArray.get(i));
-        }
-        jList1.setModel(listModel);
-        
-        jComboBox1.setModel(new DefaultComboBoxModel());
-        for (int i = 0; i < landList.size(); i++)
+            ctrl.addNewPerson(jTextField15.getText(), Integer.parseInt(jLabel11.getText()));
+            ctrl.getUserArray();
+            jTabbedPane1.setSelectedIndex(1);
+            jTextField11.setText(ctrl.getUsername());
+            jTextField12.setText(Integer.parseInt(ctrl.getScore() + "") + "");
+            listModel = new DefaultListModel();
+            for (int i = 0; i < drugArray.size(); i++)
+            {
+                listModel.addElement(drugArray.get(i));
+            }
+            jList1.setModel(listModel);
+
+            jComboBox1.setModel(new DefaultComboBoxModel());
+            for (int i = 0; i < landList.size(); i++)
+            {
+                jComboBox1.addItem(landList.get(i));
+            }
+        } else
         {
-            jComboBox1.addItem(landList.get(i));
+            jTextArea1.setText("Vær venlig at indtaste et brugernavn");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -479,6 +536,7 @@ public class ChangeGUI extends javax.swing.JFrame
         Drugs drug = drugArray.get(jList1.getSelectedIndex());
 
         ctrl.buyDrugs(drug, Integer.parseInt(quantity.getText() + ""));
+        jTextField12.setText(Integer.parseInt(ctrl.getScore() + "") + "");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jList1MouseClicked
@@ -507,6 +565,7 @@ public class ChangeGUI extends javax.swing.JFrame
         Drugs drug = yourDrugs.get(jList2.getSelectedIndex());
 
         ctrl.sellDrugs(drug, Integer.parseInt(quantity1.getText()));
+        jTextField8.setText(Integer.parseInt(ctrl.getScore() + "") + "");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField11ActionPerformed
@@ -519,6 +578,8 @@ public class ChangeGUI extends javax.swing.JFrame
         jTabbedPane1.setSelectedIndex(2);
         listModel = new DefaultListModel();
         yourDrugs = ctrl.getYourDrugs();
+        jTextField7.setText(ctrl.getUsername());
+        jTextField8.setText(Integer.parseInt(ctrl.getScore() + "") + "");
         ctrl.addDrugs();
         drugArray = ctrl.getDrugs();
         for (int i = 0; i < yourDrugs.size(); i++)
@@ -535,12 +596,18 @@ public class ChangeGUI extends javax.swing.JFrame
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         jTabbedPane1.setSelectedIndex(1);
+        jTextField12.setText(Integer.parseInt(ctrl.getScore() + "") + "");
         listModel = new DefaultListModel();
         for (int i = 0; i < drugArray.size(); i++)
         {
             listModel.addElement(drugArray.get(i));
         }
         jList1.setModel(listModel);
+        jComboBox1.setModel(new DefaultComboBoxModel());
+        for (int i = 0; i < landList.size(); i++)
+        {
+            jComboBox1.addItem(landList.get(i));
+        }
         jTextField4.setText("");
         quantity1.setText("");
         jTextField5.setText("");
@@ -608,6 +675,8 @@ public class ChangeGUI extends javax.swing.JFrame
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -615,6 +684,7 @@ public class ChangeGUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JPanel jPanel1;
@@ -623,15 +693,18 @@ public class ChangeGUI extends javax.swing.JFrame
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

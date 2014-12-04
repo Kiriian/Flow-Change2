@@ -74,6 +74,7 @@ public class Controller
                 if (drug.getDrugName().equals(i.getDrugName()))
                 {
                     i.setBaseAvailability(i.getBaseAvailability() + quantity);
+                    setScoreBuy();
                     System.out.println(yourDrugs.toString() + "fisk");
                     break;
                 }
@@ -83,6 +84,7 @@ public class Controller
             drug.setBaseAvailability(quantity);
             System.out.println("mængden fra gui er: " + quantity);
             yourDrugs.add(drug);
+            setScoreBuy();
             System.out.println(yourDrugs.toString() + "hello");
         }
 
@@ -124,21 +126,21 @@ public class Controller
         if (quantity < drug.getBaseAvailability())
         {
             drug.setBaseAvailability(drug.getBaseAvailability() - quantity);
+            setScoreSell();
             System.out.println("remaining: " + drug.getBaseAvailability());
-        }
-        else if (quantity == drug.getBaseAvailability())
+        } else if (quantity == drug.getBaseAvailability())
         {
             yourDrugs.remove(drug);
+            setScoreSell();
             System.out.println("arraylist: " + yourDrugs.toString());
-        }
-        else
+        } else
         {
             System.out.println("you can't sell, what you don't have");
         }
 
     }
-    
-        public ArrayList<Country> getCountries()
+
+    public ArrayList<Country> getCountries()
     {
         landList.add(new Country("Denmark"));
         landList.add(new Country("Columbia"));
@@ -153,7 +155,6 @@ public class Controller
     {
         if (days == 20)
         {
-            addPerson(username);
             return days;
         } else
         {
@@ -162,17 +163,49 @@ public class Controller
         }
     }
 
-    public void addPerson(String userName)
+    public ArrayList<Person> getUserArray()
     {
-        userArray.add(new Person(userName));
+        return userArray;
+    }
 
-        FileHandler.save(userArray, "highscore.txt");
+    public String getUsername()
+    {
+        Person p = userArray.get(0);
+        return p.getUsername();
+    }
+
+    public int setScoreSell()
+    {
+        Person p = userArray.get(0);
+        p.setScore(p.getScore() + totalPrice);
+        return p.getScore();
+    }
+
+    public int setScoreBuy()
+    {
+        Person p = userArray.get(0);
+        System.out.println("hej total: " + totalPrice);
+        p.setScore(p.getScore() - totalPrice);
+        System.out.println("Score" + p.getScore());
+        return p.getScore();
+    }
+
+    public int getScore()
+    {
+        Person p = userArray.get(0);
+        return p.getScore();
+    }
+
+    public void addNewPerson(String username, int score)
+    {
+        userArray.add(new Person(username, score));
+        System.out.println("userArray: " + userArray.toString());
     }
 
     public int totalPrice(int number, int quantity)
     {
         System.out.println("number =" + quantity);
-        int totalPrice = number * quantity;
+        totalPrice = number * quantity;
         //Her skal scoren gemmes på spilleren - der bliver new¨et i starten af controlleren
         return totalPrice;
     }

@@ -35,7 +35,8 @@ public class FileHandler
             String linje = file_scanner.nextLine();
             Scanner sc = new Scanner(linje).useDelimiter(",");
             String username = sc.next();
-            Person p = new Person(username);
+            int score = sc.nextInt();
+            Person p = new Person(username, score);
             System.out.println(p);
             highScore.add(p);  //Reading in a single line and saving in the ArrayList
         }
