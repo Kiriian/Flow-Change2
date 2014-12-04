@@ -526,6 +526,10 @@ public class ChangeGUI extends javax.swing.JFrame
             listModel.addElement(yourDrugs.get(i).sellString());
         }
         jList2.setModel(listModel);
+        jTextField1.setText("");
+        quantity.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
