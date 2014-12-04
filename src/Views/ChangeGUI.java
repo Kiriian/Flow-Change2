@@ -180,8 +180,8 @@ public class ChangeGUI extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addGap(15, 15, 15)
                 .addComponent(jButton3)
                 .addGap(35, 35, 35))
@@ -670,12 +670,10 @@ public class ChangeGUI extends javax.swing.JFrame
         }
         else
         {
-            System.out.println("Go to Hell- Pernille");
             jTabbedPane1.setSelectedIndex(3);
             ctrl.save("highscore.txt");
             //userArray.clear();
-            ctrl.load("highscore.txt");
-            System.out.println("Array størrelse: " + userArray.size());
+            userArray = ctrl.load("highscore.txt");
             listModel = new DefaultListModel();
             for (int i = 0; i < userArray.size(); i++)
             {

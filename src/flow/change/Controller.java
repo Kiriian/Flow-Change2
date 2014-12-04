@@ -22,7 +22,7 @@ public class Controller
 
     private Random random = new Random();
     private ArrayList<Drugs> drugArray = new ArrayList<>();
-    private ArrayList<Person> userArray;
+    private ArrayList<Person> userArray = new ArrayList<>();
     private ArrayList<Drugs> yourDrugs = new ArrayList<>();
     private ArrayList<Country> landList = new ArrayList<>();
     private String drugName;
@@ -95,30 +95,16 @@ public class Controller
         return yourDrugs;
     }
 
-    public boolean load(String filename)
+    public ArrayList<Person> load(String filename)
     {
-        userArray = FileHandler.loadPerson(filename);
-
-        if (userArray == null)
-        {
-            return false;
-        } else
-        {
-            return true;
-        }
+        return userArray = FileHandler.loadPerson(filename);
     }
 
     public boolean save(String filename)
     {
         FileHandler.save(userArray, filename);
 
-        if (userArray == null)
-        {
-            return false;
-        } else
-        {
-            return true;
-        }
+        return true;
     }
 
     public void sellDrugs(Drugs drug, int quantity)
