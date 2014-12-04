@@ -149,7 +149,7 @@ public class Controller
         return landList;
     }
 
-    public int travel(String username, int score)
+    public int travel(String username)
     {
         if (days == 20)
         {

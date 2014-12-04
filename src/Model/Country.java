@@ -5,8 +5,6 @@
  */
 package Model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Jeanette
@@ -21,6 +19,12 @@ public class Country
     }
 
     public String getCountry()
+    {
+        return country;
+    }
+
+    @Override
+    public String toString()
     {
         return country;
     }
