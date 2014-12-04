@@ -21,7 +21,7 @@ public class FileHandler
     public static ArrayList<Person> loadPerson (String filename)
     {
     Scanner file_scanner = null;
-    ArrayList<Person> highScore = new ArrayList<>();
+    ArrayList<Person> userArray = new ArrayList<>();
 
         try {
             file_scanner = new Scanner(new File(filename));  //Connection to the file using the Scanner object
@@ -38,15 +38,18 @@ public class FileHandler
             int score = sc.nextInt();
             Person p = new Person(username, score);
             System.out.println(p);
-            highScore.add(p);  //Reading in a single line and saving in the ArrayList
+            userArray.add(p);  //Reading in a single line and saving in the ArrayList
         }
 
         file_scanner.close();  //Closing the file
-        return highScore;    //returning the arraylist
+        return userArray;    //returning the arraylist
     }
-    public static boolean save(ArrayList<Person> highScore, String filename) 
+    
+    
+    
+    public static boolean save(ArrayList<Person> userArray, String filename) 
     {
-        if (highScore == null)
+        if (userArray == null)
         {
             return false;
         }  //Checking parameter for null.
@@ -56,7 +59,7 @@ public class FileHandler
         {
             FileWriter writer = new FileWriter(filename,true);
             //output = new FileWriter(new File(Ordpar));  //Opening connection to file.
-            for (Person highScorelines : highScore)
+            for (Person highScorelines : userArray)
             {   //running through the ArrayList.                    
                 writer.append(highScorelines.toString()+ ("\r\n"));
                 //Each String object is written as a line in file.

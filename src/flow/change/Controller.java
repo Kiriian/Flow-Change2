@@ -22,12 +22,12 @@ public class Controller
 
     private Random random = new Random();
     private ArrayList<Drugs> drugArray = new ArrayList<>();
-    private ArrayList<Person> userArray = new ArrayList<>();
+    private ArrayList<Person> userArray;
     private ArrayList<Drugs> yourDrugs = new ArrayList<>();
     private ArrayList<Country> landList = new ArrayList<>();
     private String drugName;
     private int finalPrice;
-    private int days = 20;
+    private int days = 4;
     private static int totalPrice;
     private PriceStrategy PriceStrategy_OldMemory = new PriceStrategy_OldMemory();
     private PriceStrategy PriceStrategy_ABC = new PriceStrategy_ABC();
@@ -97,9 +97,9 @@ public class Controller
 
     public boolean load(String filename)
     {
-//        drugArray = FileHandler.loadDrugs("Drugs.txt");
+        userArray = FileHandler.loadPerson(filename);
 
-        if (drugArray == null)
+        if (userArray == null)
         {
             return false;
         } else
@@ -110,7 +110,7 @@ public class Controller
 
     public boolean save(String filename)
     {
-        FileHandler.save(userArray, "highscore.txt");
+        FileHandler.save(userArray, filename);
 
         if (userArray == null)
         {

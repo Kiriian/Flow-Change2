@@ -45,7 +45,7 @@ public class Person
     @Override
     public String toString()
     {
-        return "Person{" + "Score=" + score + ", username=" + username + '}';
+        return username +"," +score;
     }
       
 //    public int newScore()
